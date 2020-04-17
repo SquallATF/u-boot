@@ -643,6 +643,9 @@ config SKIP_RELOCATE_UBOOT
 	help
 	  This enable support for skipping U-Boot relocation.
 
+config HWVERSION_FIREFLY
+    bool "firefly hwversion"
+
 menu "Security support"
 
 config HASH

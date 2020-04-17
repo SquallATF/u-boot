@@ -10,6 +10,7 @@
 #include <attestation_key.h>
 #include <boot_rkimg.h>
 #include <keymaster.h>
+#include <firefly_hwversion.h>
 
 #define OEM_UNLOCK_ARG_SIZE 30
 
@@ -53,6 +54,10 @@ static int do_boot_rockchip(cmd_tbl_t *cmdtp, int flag, int argc,
 		snprintf(oem_unlock, OEM_UNLOCK_ARG_SIZE, "androidboot.oem_unlocked=%d", unlock);
 		env_update("bootargs", oem_unlock);
 	}
+#endif
+
+#ifdef CONFIG_HWVERSION_FIREFLY
+    firefly_hwversion_setenv();
 #endif
 
 	mode = rockchip_get_boot_mode();

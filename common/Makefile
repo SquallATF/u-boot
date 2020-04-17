@@ -147,3 +147,4 @@ obj-y += xyzModem.o
 obj-$(CONFIG_ANDROID_WRITE_KEYBOX) += write_keybox.o
 obj-$(CONFIG_ANDROID_KEYMASTER_CA) += keymaster.o
 obj-$(CONFIG_ANDROID_KEYMASTER_CA) += attestation_key.o
+obj-$(CONFIG_HWVERSION_FIREFLY) += firefly_hwversion.o

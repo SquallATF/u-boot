@@ -26,6 +26,7 @@
 #include <bidram.h>
 #include <console.h>
 #include <sysmem.h>
+#include <firefly_hwversion.h>
 
 DECLARE_GLOBAL_DATA_PTR;
 
@@ -1163,6 +1164,10 @@ int android_bootloader_boot_flow(struct blk_desc *dev_desc,
 		snprintf(oem_unlock, OEM_UNLOCK_ARG_SIZE, "androidboot.oem_unlocked=%d", unlock);
 		env_update("bootargs", oem_unlock);
 	}
+#endif
+
+#ifdef CONFIG_HWVERSION_FIREFLY
+    firefly_hwversion_setenv();
 #endif
 
 	/* Assemble the command line */
