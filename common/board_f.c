@@ -483,6 +483,19 @@ static int reserve_fdt(void)
 	return 0;
 }
 
+static int setup_telpo(void)
+{
+  u32 orig;
+  orig = readl(0xff788004);
+  orig |= 0x20000000;
+  writel(orig, 0xff788004);
+  orig = readl(0xff788000);
+  orig |= 0x20000000;
+  writel(orig, 0xff788000);
+  writel(0x20002, 0xff77e640);
+  return 0;
+}
+
 static int reserve_bootstage(void)
 {
 #ifdef CONFIG_BOOTSTAGE
@@ -907,6 +920,7 @@ static const init_fnc_t init_sequence_f[] = {
 		!CONFIG_IS_ENABLED(X86_64)
 	jump_to_copy,
 #endif
+  setup_telpo,
 	NULL,
 };
 
